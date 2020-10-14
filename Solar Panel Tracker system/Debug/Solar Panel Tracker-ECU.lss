@@ -1,0 +1,1121 @@
+
+Solar Panel Tracker-ECU.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000644  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000004c  00800060  00000644  000006d8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000013  008000ac  008000ac  00000724  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000724  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000754  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000138  00000000  00000000  00000790  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001c3b  00000000  00000000  000008c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000aaf  00000000  00000000  00002503  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000008b7  00000000  00000000  00002fb2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000288  00000000  00000000  0000386c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000075e  00000000  00000000  00003af4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000009d6  00000000  00000000  00004252  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000e8  00000000  00000000  00004c28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__vector_16>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e4 e4       	ldi	r30, 0x44	; 68
+  68:	f6 e0       	ldi	r31, 0x06	; 6
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ac 3a       	cpi	r26, 0xAC	; 172
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	ac ea       	ldi	r26, 0xAC	; 172
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	af 3b       	cpi	r26, 0xBF	; 191
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 66 02 	call	0x4cc	; 0x4cc <main>
+  8a:	0c 94 20 03 	jmp	0x640	; 0x640 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <__vector_16>:
+#include "ADC.h"
+
+volatile uint16 g_ADC_value = 0;
+
+ISR(ADC_vect)
+{
+  92:	1f 92       	push	r1
+  94:	0f 92       	push	r0
+  96:	0f b6       	in	r0, 0x3f	; 63
+  98:	0f 92       	push	r0
+  9a:	11 24       	eor	r1, r1
+  9c:	2f 93       	push	r18
+  9e:	8f 93       	push	r24
+  a0:	9f 93       	push	r25
+	g_ADC_value = ADCL_R+ADCH_R;
+  a2:	24 b1       	in	r18, 0x04	; 4
+  a4:	85 b1       	in	r24, 0x05	; 5
+  a6:	90 e0       	ldi	r25, 0x00	; 0
+  a8:	82 0f       	add	r24, r18
+  aa:	91 1d       	adc	r25, r1
+  ac:	90 93 ad 00 	sts	0x00AD, r25	; 0x8000ad <__data_end+0x1>
+  b0:	80 93 ac 00 	sts	0x00AC, r24	; 0x8000ac <__data_end>
+}
+  b4:	9f 91       	pop	r25
+  b6:	8f 91       	pop	r24
+  b8:	2f 91       	pop	r18
+  ba:	0f 90       	pop	r0
+  bc:	0f be       	out	0x3f, r0	; 63
+  be:	0f 90       	pop	r0
+  c0:	1f 90       	pop	r1
+  c2:	18 95       	reti
+
+000000c4 <ADC_init>:
+
+void ADC_init(const ADC_ConfigType * Config_Ptr)
+{
+  c4:	fc 01       	movw	r30, r24
+	/* ADMUX Register Bits Description:
+	 * REFS1:0 = 00 to choose to connect external reference voltage by input this voltage through AREF pin
+	 * ADLAR   = 0 right adjusted
+	 * MUX4:0  = 00000 to choose channel 0 as initialization
+	 */
+	ADMUX_R = ((Config_Ptr -> voltage) << 6) & 0xC0;
+  c6:	20 81       	ld	r18, Z
+  c8:	80 e4       	ldi	r24, 0x40	; 64
+  ca:	28 9f       	mul	r18, r24
+  cc:	90 01       	movw	r18, r0
+  ce:	11 24       	eor	r1, r1
+  d0:	27 b9       	out	0x07, r18	; 7
+	 * ADIE    = 1 Enable ADC Interrupt
+	 * ADPS2:0 = 011 to choose ADC_Clock=F_CPU/8=1Mhz/8=125Khz --> ADC must operate in range 50-200Khz
+	 */
+
+	/* Check if we are using polling mode */
+	if(Config_Ptr -> mode == 0)
+  d2:	82 81       	ldd	r24, Z+2	; 0x02
+  d4:	81 11       	cpse	r24, r1
+  d6:	05 c0       	rjmp	.+10     	; 0xe2 <ADC_init+0x1e>
+	{
+		ADCSRA_R = (1 << ADEN_B) | (Config_Ptr -> prescalar & 0x07);
+  d8:	81 81       	ldd	r24, Z+1	; 0x01
+  da:	87 70       	andi	r24, 0x07	; 7
+  dc:	80 68       	ori	r24, 0x80	; 128
+  de:	86 b9       	out	0x06, r24	; 6
+  e0:	08 95       	ret
+	}
+	/* Check if we are using interrupt mode */
+	else if(Config_Ptr -> mode == 1)
+  e2:	81 30       	cpi	r24, 0x01	; 1
+  e4:	21 f4       	brne	.+8      	; 0xee <ADC_init+0x2a>
+	{
+		ADCSRA_R = (1 << ADEN_B) | (1 << ADIE_B) | (Config_Ptr -> prescalar & 0x07);
+  e6:	81 81       	ldd	r24, Z+1	; 0x01
+  e8:	87 70       	andi	r24, 0x07	; 7
+  ea:	88 68       	ori	r24, 0x88	; 136
+  ec:	86 b9       	out	0x06, r24	; 6
+  ee:	08 95       	ret
+
+000000f0 <ADC_readChannel>:
+
+}
+
+void ADC_readChannel(uint8 channel_num,const ADC_ConfigType * Config_Ptr)
+{
+	ADMUX_R = (ADMUX_R & 0xE0) | (channel_num & 0x07) ;
+  f0:	97 b1       	in	r25, 0x07	; 7
+  f2:	90 7e       	andi	r25, 0xE0	; 224
+  f4:	87 70       	andi	r24, 0x07	; 7
+  f6:	89 2b       	or	r24, r25
+  f8:	87 b9       	out	0x07, r24	; 7
+
+	/* start conversion write '1' to ADSC */
+	SetBit(ADCSRA_R,ADSC_B);
+  fa:	36 9a       	sbi	0x06, 6	; 6
+
+	if(Config_Ptr -> mode == 0)
+  fc:	fb 01       	movw	r30, r22
+  fe:	82 81       	ldd	r24, Z+2	; 0x02
+ 100:	81 11       	cpse	r24, r1
+ 102:	09 c0       	rjmp	.+18     	; 0x116 <ADC_readChannel+0x26>
+	{
+		/* wait for conversion to complete ADIF becomes '1' */
+		while(BitIsClear(ADCSRA_R,ADIF_B));
+ 104:	34 9b       	sbis	0x06, 4	; 6
+ 106:	fe cf       	rjmp	.-4      	; 0x104 <ADC_readChannel+0x14>
+
+		/* clear ADIF by write '1' to it */
+		SetBit(ADCSRA_R,ADIF_B);
+ 108:	34 9a       	sbi	0x06, 4	; 6
+
+		/* return the data register */
+		g_ADC_value = ADC_R;
+ 10a:	84 b1       	in	r24, 0x04	; 4
+ 10c:	95 b1       	in	r25, 0x05	; 5
+ 10e:	90 93 ad 00 	sts	0x00AD, r25	; 0x8000ad <__data_end+0x1>
+ 112:	80 93 ac 00 	sts	0x00AC, r24	; 0x8000ac <__data_end>
+ 116:	08 95       	ret
+
+00000118 <SetPinDirection>:
+	}
+}
+/********************************************************************************/
+void SetPinDirection (pName PortName, uint8 PinNumber, Direction Dir)
+{
+	switch (Dir)
+ 118:	44 23       	and	r20, r20
+ 11a:	79 f0       	breq	.+30     	; 0x13a <SetPinDirection+0x22>
+ 11c:	41 30       	cpi	r20, 0x01	; 1
+ 11e:	d1 f4       	brne	.+52     	; 0x154 <SetPinDirection+0x3c>
+	{
+		case OUTPUT:
+			(*(volatile uint8 *)(PortName+1)) |= (1<<PinNumber); 
+ 120:	e8 2f       	mov	r30, r24
+ 122:	f0 e0       	ldi	r31, 0x00	; 0
+ 124:	21 81       	ldd	r18, Z+1	; 0x01
+ 126:	81 e0       	ldi	r24, 0x01	; 1
+ 128:	90 e0       	ldi	r25, 0x00	; 0
+ 12a:	02 c0       	rjmp	.+4      	; 0x130 <SetPinDirection+0x18>
+ 12c:	88 0f       	add	r24, r24
+ 12e:	99 1f       	adc	r25, r25
+ 130:	6a 95       	dec	r22
+ 132:	e2 f7       	brpl	.-8      	; 0x12c <SetPinDirection+0x14>
+ 134:	82 2b       	or	r24, r18
+ 136:	81 83       	std	Z+1, r24	; 0x01
+			break; 
+ 138:	08 95       	ret
+			
+		case INPUT: 
+			(*(volatile uint8 *)(PortName+1)) &= ~(1<<PinNumber); 
+ 13a:	e8 2f       	mov	r30, r24
+ 13c:	f0 e0       	ldi	r31, 0x00	; 0
+ 13e:	21 81       	ldd	r18, Z+1	; 0x01
+ 140:	81 e0       	ldi	r24, 0x01	; 1
+ 142:	90 e0       	ldi	r25, 0x00	; 0
+ 144:	02 c0       	rjmp	.+4      	; 0x14a <SetPinDirection+0x32>
+ 146:	88 0f       	add	r24, r24
+ 148:	99 1f       	adc	r25, r25
+ 14a:	6a 95       	dec	r22
+ 14c:	e2 f7       	brpl	.-8      	; 0x146 <SetPinDirection+0x2e>
+ 14e:	80 95       	com	r24
+ 150:	82 23       	and	r24, r18
+ 152:	81 83       	std	Z+1, r24	; 0x01
+ 154:	08 95       	ret
+
+00000156 <WriteOnPort>:
+	}
+}
+/********************************************************************************/
+void WriteOnPort (pName PortName, uint8 value)
+{
+	(*(volatile uint8 *)(PortName+2)) = value; 	
+ 156:	e8 2f       	mov	r30, r24
+ 158:	f0 e0       	ldi	r31, 0x00	; 0
+ 15a:	62 83       	std	Z+2, r22	; 0x02
+ 15c:	08 95       	ret
+
+0000015e <WriteOnpin>:
+}
+
+void WriteOnpin (pName PortName, uint8 PinNumber, Value val)
+{
+	switch (val)
+ 15e:	44 23       	and	r20, r20
+ 160:	79 f0       	breq	.+30     	; 0x180 <WriteOnpin+0x22>
+ 162:	41 30       	cpi	r20, 0x01	; 1
+ 164:	d1 f4       	brne	.+52     	; 0x19a <WriteOnpin+0x3c>
+	{
+		case HIGH:
+			(*(volatile uint8 *)(PortName+2)) |= (1<<PinNumber);
+ 166:	e8 2f       	mov	r30, r24
+ 168:	f0 e0       	ldi	r31, 0x00	; 0
+ 16a:	22 81       	ldd	r18, Z+2	; 0x02
+ 16c:	81 e0       	ldi	r24, 0x01	; 1
+ 16e:	90 e0       	ldi	r25, 0x00	; 0
+ 170:	02 c0       	rjmp	.+4      	; 0x176 <WriteOnpin+0x18>
+ 172:	88 0f       	add	r24, r24
+ 174:	99 1f       	adc	r25, r25
+ 176:	6a 95       	dec	r22
+ 178:	e2 f7       	brpl	.-8      	; 0x172 <WriteOnpin+0x14>
+ 17a:	82 2b       	or	r24, r18
+ 17c:	82 83       	std	Z+2, r24	; 0x02
+			break; 
+ 17e:	08 95       	ret
+		case LOW:
+			(*(volatile uint8 *)(PortName+2)) &= ~(1<<PinNumber);
+ 180:	e8 2f       	mov	r30, r24
+ 182:	f0 e0       	ldi	r31, 0x00	; 0
+ 184:	22 81       	ldd	r18, Z+2	; 0x02
+ 186:	81 e0       	ldi	r24, 0x01	; 1
+ 188:	90 e0       	ldi	r25, 0x00	; 0
+ 18a:	02 c0       	rjmp	.+4      	; 0x190 <WriteOnpin+0x32>
+ 18c:	88 0f       	add	r24, r24
+ 18e:	99 1f       	adc	r25, r25
+ 190:	6a 95       	dec	r22
+ 192:	e2 f7       	brpl	.-8      	; 0x18c <WriteOnpin+0x2e>
+ 194:	80 95       	com	r24
+ 196:	82 23       	and	r24, r18
+ 198:	82 83       	std	Z+2, r24	; 0x02
+ 19a:	08 95       	ret
+
+0000019c <lcd_command2>:
+}
+
+
+
+void lcd_command2(const LCD_PinsCnfg_t * ptr, uint8 cmd)
+{  
+ 19c:	1f 93       	push	r17
+ 19e:	cf 93       	push	r28
+ 1a0:	df 93       	push	r29
+ 1a2:	ec 01       	movw	r28, r24
+ 1a4:	16 2f       	mov	r17, r22
+	WriteOnpin(ptr->CommandPort,ptr->RegSelect,LOW);
+ 1a6:	6b 85       	ldd	r22, Y+11	; 0x0b
+ 1a8:	70 e0       	ldi	r23, 0x00	; 0
+ 1aa:	89 85       	ldd	r24, Y+9	; 0x09
+ 1ac:	40 e0       	ldi	r20, 0x00	; 0
+ 1ae:	50 e0       	ldi	r21, 0x00	; 0
+ 1b0:	90 e0       	ldi	r25, 0x00	; 0
+ 1b2:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	
+	#ifdef _8BIT_MODE 
+		WriteOnPort(ptr->DataPort,cmd);
+ 1b6:	61 2f       	mov	r22, r17
+ 1b8:	70 e0       	ldi	r23, 0x00	; 0
+ 1ba:	88 81       	ld	r24, Y
+ 1bc:	90 e0       	ldi	r25, 0x00	; 0
+ 1be:	0e 94 ab 00 	call	0x156	; 0x156 <WriteOnPort>
+		WriteOnpin(ptr->CommandPort,ptr->EnablePin,HIGH);
+ 1c2:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 1c4:	70 e0       	ldi	r23, 0x00	; 0
+ 1c6:	89 85       	ldd	r24, Y+9	; 0x09
+ 1c8:	41 e0       	ldi	r20, 0x01	; 1
+ 1ca:	50 e0       	ldi	r21, 0x00	; 0
+ 1cc:	90 e0       	ldi	r25, 0x00	; 0
+ 1ce:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1d2:	8f ec       	ldi	r24, 0xCF	; 207
+ 1d4:	97 e0       	ldi	r25, 0x07	; 7
+ 1d6:	01 97       	sbiw	r24, 0x01	; 1
+ 1d8:	f1 f7       	brne	.-4      	; 0x1d6 <lcd_command2+0x3a>
+ 1da:	00 c0       	rjmp	.+0      	; 0x1dc <lcd_command2+0x40>
+ 1dc:	00 00       	nop
+		_delay_ms(1);
+		WriteOnpin(ptr->CommandPort,ptr->EnablePin,LOW);
+ 1de:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 1e0:	70 e0       	ldi	r23, 0x00	; 0
+ 1e2:	89 85       	ldd	r24, Y+9	; 0x09
+ 1e4:	40 e0       	ldi	r20, 0x00	; 0
+ 1e6:	50 e0       	ldi	r21, 0x00	; 0
+ 1e8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ea:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1ee:	87 ec       	ldi	r24, 0xC7	; 199
+ 1f0:	90 e0       	ldi	r25, 0x00	; 0
+ 1f2:	01 97       	sbiw	r24, 0x01	; 1
+ 1f4:	f1 f7       	brne	.-4      	; 0x1f2 <lcd_command2+0x56>
+ 1f6:	00 c0       	rjmp	.+0      	; 0x1f8 <lcd_command2+0x5c>
+ 1f8:	00 00       	nop
+		_delay_ms(1);
+		WriteOnpin(ptr->CommandPort,ptr->EnablePin,LOW);
+		_delay_us(100);
+		WriteOnPort(ptr->DataPort,(cmd<<4)); //send the Low nibble to D4:D7
+	#endif	
+}
+ 1fa:	df 91       	pop	r29
+ 1fc:	cf 91       	pop	r28
+ 1fe:	1f 91       	pop	r17
+ 200:	08 95       	ret
+
+00000202 <lcd_init>:
+ */ 
+
+#include "LCD.h"
+
+void lcd_init(const LCD_PinsCnfg_t * ptr)
+{   
+ 202:	ef 92       	push	r14
+ 204:	ff 92       	push	r15
+ 206:	0f 93       	push	r16
+ 208:	1f 93       	push	r17
+ 20a:	cf 93       	push	r28
+ 20c:	df 93       	push	r29
+ 20e:	8c 01       	movw	r16, r24
+ 210:	ec 01       	movw	r28, r24
+ 212:	21 96       	adiw	r28, 0x01	; 1
+ 214:	7c 01       	movw	r14, r24
+ 216:	89 e0       	ldi	r24, 0x09	; 9
+ 218:	e8 0e       	add	r14, r24
+ 21a:	f1 1c       	adc	r15, r1
+	uint8 i; 
+	for (i = 0; i < DATA_PINS; i++)
+	{
+		SetPinDirection(ptr->DataPort,ptr->DataPins[i],OUTPUT);
+ 21c:	69 91       	ld	r22, Y+
+ 21e:	70 e0       	ldi	r23, 0x00	; 0
+ 220:	f8 01       	movw	r30, r16
+ 222:	80 81       	ld	r24, Z
+ 224:	41 e0       	ldi	r20, 0x01	; 1
+ 226:	50 e0       	ldi	r21, 0x00	; 0
+ 228:	90 e0       	ldi	r25, 0x00	; 0
+ 22a:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+#include "LCD.h"
+
+void lcd_init(const LCD_PinsCnfg_t * ptr)
+{   
+	uint8 i; 
+	for (i = 0; i < DATA_PINS; i++)
+ 22e:	ce 15       	cp	r28, r14
+ 230:	df 05       	cpc	r29, r15
+ 232:	a1 f7       	brne	.-24     	; 0x21c <lcd_init+0x1a>
+	{
+		SetPinDirection(ptr->DataPort,ptr->DataPins[i],OUTPUT);
+	}
+	SetPinDirection(ptr->CommandPort,ptr->EnablePin,OUTPUT);
+ 234:	f8 01       	movw	r30, r16
+ 236:	62 85       	ldd	r22, Z+10	; 0x0a
+ 238:	70 e0       	ldi	r23, 0x00	; 0
+ 23a:	81 85       	ldd	r24, Z+9	; 0x09
+ 23c:	41 e0       	ldi	r20, 0x01	; 1
+ 23e:	50 e0       	ldi	r21, 0x00	; 0
+ 240:	90 e0       	ldi	r25, 0x00	; 0
+ 242:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+	SetPinDirection(ptr->CommandPort,ptr->RegSelect,OUTPUT);               
+ 246:	f8 01       	movw	r30, r16
+ 248:	63 85       	ldd	r22, Z+11	; 0x0b
+ 24a:	70 e0       	ldi	r23, 0x00	; 0
+ 24c:	81 85       	ldd	r24, Z+9	; 0x09
+ 24e:	41 e0       	ldi	r20, 0x01	; 1
+ 250:	50 e0       	ldi	r21, 0x00	; 0
+ 252:	90 e0       	ldi	r25, 0x00	; 0
+ 254:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+ 258:	8f e9       	ldi	r24, 0x9F	; 159
+ 25a:	9f e0       	ldi	r25, 0x0F	; 15
+ 25c:	01 97       	sbiw	r24, 0x01	; 1
+ 25e:	f1 f7       	brne	.-4      	; 0x25c <lcd_init+0x5a>
+ 260:	00 c0       	rjmp	.+0      	; 0x262 <lcd_init+0x60>
+ 262:	00 00       	nop
+		lcd_command2(ptr,BIT_4);	
+	#endif
+	
+	#ifdef _8BIT_MODE
+		_delay_us(2000);
+		lcd_command2(ptr,BIT_8); 
+ 264:	68 e3       	ldi	r22, 0x38	; 56
+ 266:	c8 01       	movw	r24, r16
+ 268:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+	#endif
+	
+	lcd_command2(ptr,CURSOR_OFF);                         
+ 26c:	6c e0       	ldi	r22, 0x0C	; 12
+ 26e:	c8 01       	movw	r24, r16
+ 270:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+	lcd_command2(ptr,CLEAR_SCREEN);                         
+ 274:	61 e0       	ldi	r22, 0x01	; 1
+ 276:	c8 01       	movw	r24, r16
+ 278:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+ 27c:	ef e9       	ldi	r30, 0x9F	; 159
+ 27e:	ff e0       	ldi	r31, 0x0F	; 15
+ 280:	31 97       	sbiw	r30, 0x01	; 1
+ 282:	f1 f7       	brne	.-4      	; 0x280 <lcd_init+0x7e>
+ 284:	00 c0       	rjmp	.+0      	; 0x286 <lcd_init+0x84>
+ 286:	00 00       	nop
+	_delay_us(2000);
+	lcd_command2(ptr,ENTRY_MODE);                        
+ 288:	66 e0       	ldi	r22, 0x06	; 6
+ 28a:	c8 01       	movw	r24, r16
+ 28c:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+}
+ 290:	df 91       	pop	r29
+ 292:	cf 91       	pop	r28
+ 294:	1f 91       	pop	r17
+ 296:	0f 91       	pop	r16
+ 298:	ff 90       	pop	r15
+ 29a:	ef 90       	pop	r14
+ 29c:	08 95       	ret
+
+0000029e <WriteChar>:
+
+
+
+
+void WriteChar(const LCD_PinsCnfg_t * ptr, uint8 ch)
+{
+ 29e:	1f 93       	push	r17
+ 2a0:	cf 93       	push	r28
+ 2a2:	df 93       	push	r29
+ 2a4:	ec 01       	movw	r28, r24
+ 2a6:	16 2f       	mov	r17, r22
+		WriteOnpin(ptr->CommandPort,ptr->RegSelect,HIGH);
+ 2a8:	6b 85       	ldd	r22, Y+11	; 0x0b
+ 2aa:	70 e0       	ldi	r23, 0x00	; 0
+ 2ac:	89 85       	ldd	r24, Y+9	; 0x09
+ 2ae:	41 e0       	ldi	r20, 0x01	; 1
+ 2b0:	50 e0       	ldi	r21, 0x00	; 0
+ 2b2:	90 e0       	ldi	r25, 0x00	; 0
+ 2b4:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+		
+		#ifdef _8BIT_MODE
+		WriteOnPort(ptr->DataPort,ch);
+ 2b8:	61 2f       	mov	r22, r17
+ 2ba:	70 e0       	ldi	r23, 0x00	; 0
+ 2bc:	88 81       	ld	r24, Y
+ 2be:	90 e0       	ldi	r25, 0x00	; 0
+ 2c0:	0e 94 ab 00 	call	0x156	; 0x156 <WriteOnPort>
+		WriteOnpin(ptr->CommandPort,ptr->EnablePin,HIGH);
+ 2c4:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 2c6:	70 e0       	ldi	r23, 0x00	; 0
+ 2c8:	89 85       	ldd	r24, Y+9	; 0x09
+ 2ca:	41 e0       	ldi	r20, 0x01	; 1
+ 2cc:	50 e0       	ldi	r21, 0x00	; 0
+ 2ce:	90 e0       	ldi	r25, 0x00	; 0
+ 2d0:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2d4:	8f ec       	ldi	r24, 0xCF	; 207
+ 2d6:	97 e0       	ldi	r25, 0x07	; 7
+ 2d8:	01 97       	sbiw	r24, 0x01	; 1
+ 2da:	f1 f7       	brne	.-4      	; 0x2d8 <WriteChar+0x3a>
+ 2dc:	00 c0       	rjmp	.+0      	; 0x2de <WriteChar+0x40>
+ 2de:	00 00       	nop
+		_delay_ms(1);
+		WriteOnpin(ptr->CommandPort,ptr->EnablePin,LOW);
+ 2e0:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 2e2:	70 e0       	ldi	r23, 0x00	; 0
+ 2e4:	89 85       	ldd	r24, Y+9	; 0x09
+ 2e6:	40 e0       	ldi	r20, 0x00	; 0
+ 2e8:	50 e0       	ldi	r21, 0x00	; 0
+ 2ea:	90 e0       	ldi	r25, 0x00	; 0
+ 2ec:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2f0:	87 ec       	ldi	r24, 0xC7	; 199
+ 2f2:	90 e0       	ldi	r25, 0x00	; 0
+ 2f4:	01 97       	sbiw	r24, 0x01	; 1
+ 2f6:	f1 f7       	brne	.-4      	; 0x2f4 <WriteChar+0x56>
+ 2f8:	00 c0       	rjmp	.+0      	; 0x2fa <WriteChar+0x5c>
+ 2fa:	00 00       	nop
+		_delay_ms(1);
+		WriteOnpin(ptr->CommandPort,ptr->EnablePin,LOW);
+		_delay_us(100);
+		WriteOnPort(ptr->DataPort,(ch<<4)); //send the Low nibble to D4:D7
+		#endif
+}
+ 2fc:	df 91       	pop	r29
+ 2fe:	cf 91       	pop	r28
+ 300:	1f 91       	pop	r17
+ 302:	08 95       	ret
+
+00000304 <WriteString>:
+
+
+void WriteString (const LCD_PinsCnfg_t * ptr, String str)
+{
+ 304:	ef 92       	push	r14
+ 306:	ff 92       	push	r15
+ 308:	0f 93       	push	r16
+ 30a:	1f 93       	push	r17
+ 30c:	cf 93       	push	r28
+ 30e:	fb 01       	movw	r30, r22
+	uint8 i = 0;
+	while(str[i]!=0){WriteChar(ptr,str[i]) ; i++;}
+ 310:	60 81       	ld	r22, Z
+ 312:	66 23       	and	r22, r22
+ 314:	69 f0       	breq	.+26     	; 0x330 <WriteString+0x2c>
+ 316:	8f 01       	movw	r16, r30
+ 318:	7c 01       	movw	r14, r24
+ 31a:	c0 e0       	ldi	r28, 0x00	; 0
+ 31c:	c7 01       	movw	r24, r14
+ 31e:	0e 94 4f 01 	call	0x29e	; 0x29e <WriteChar>
+ 322:	cf 5f       	subi	r28, 0xFF	; 255
+ 324:	f8 01       	movw	r30, r16
+ 326:	ec 0f       	add	r30, r28
+ 328:	f1 1d       	adc	r31, r1
+ 32a:	60 81       	ld	r22, Z
+ 32c:	61 11       	cpse	r22, r1
+ 32e:	f6 cf       	rjmp	.-20     	; 0x31c <WriteString+0x18>
+
+}
+ 330:	cf 91       	pop	r28
+ 332:	1f 91       	pop	r17
+ 334:	0f 91       	pop	r16
+ 336:	ff 90       	pop	r15
+ 338:	ef 90       	pop	r14
+ 33a:	08 95       	ret
+
+0000033c <GotoXY>:
+
+void GotoXY(const LCD_PinsCnfg_t * ptr, uint8 row, uint8 col)
+{
+	if (row == 0)
+ 33c:	61 11       	cpse	r22, r1
+ 33e:	05 c0       	rjmp	.+10     	; 0x34a <GotoXY+0xe>
+	{
+		lcd_command2(ptr,(unsigned) 0x80 | col);
+ 340:	64 2f       	mov	r22, r20
+ 342:	60 68       	ori	r22, 0x80	; 128
+ 344:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+ 348:	08 95       	ret
+	}
+	else if (row == 1)
+ 34a:	61 30       	cpi	r22, 0x01	; 1
+ 34c:	29 f4       	brne	.+10     	; 0x358 <GotoXY+0x1c>
+	{
+		lcd_command2(ptr,(unsigned) 0xc0 | col);
+ 34e:	64 2f       	mov	r22, r20
+ 350:	60 6c       	ori	r22, 0xC0	; 192
+ 352:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+ 356:	08 95       	ret
+	}
+	#ifdef _LCD_16_4_
+	else if (row==2)
+ 358:	62 30       	cpi	r22, 0x02	; 2
+ 35a:	29 f4       	brne	.+10     	; 0x366 <GotoXY+0x2a>
+	{
+		lcd_command2(ptr,(unsigned) 0x90  | col);
+ 35c:	64 2f       	mov	r22, r20
+ 35e:	60 69       	ori	r22, 0x90	; 144
+ 360:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+ 364:	08 95       	ret
+	}
+	else if (row==3)
+ 366:	63 30       	cpi	r22, 0x03	; 3
+ 368:	21 f4       	brne	.+8      	; 0x372 <GotoXY+0x36>
+	{
+		lcd_command2(ptr,(unsigned) 0xD0 | col);
+ 36a:	64 2f       	mov	r22, r20
+ 36c:	60 6d       	ori	r22, 0xD0	; 208
+ 36e:	0e 94 ce 00 	call	0x19c	; 0x19c <lcd_command2>
+ 372:	08 95       	ret
+
+00000374 <Get_data>:
+	}
+}
+
+void Get_data()
+{
+	ADC_readChannel(0,&ADC_Config);
+ 374:	62 e7       	ldi	r22, 0x72	; 114
+ 376:	70 e0       	ldi	r23, 0x00	; 0
+ 378:	80 e0       	ldi	r24, 0x00	; 0
+ 37a:	0e 94 78 00 	call	0xf0	; 0xf0 <ADC_readChannel>
+	T_R = g_ADC_value;
+ 37e:	80 91 ac 00 	lds	r24, 0x00AC	; 0x8000ac <__data_end>
+ 382:	90 91 ad 00 	lds	r25, 0x00AD	; 0x8000ad <__data_end+0x1>
+ 386:	90 93 ba 00 	sts	0x00BA, r25	; 0x8000ba <T_R+0x1>
+ 38a:	80 93 b9 00 	sts	0x00B9, r24	; 0x8000b9 <T_R>
+	ADC_readChannel(1,&ADC_Config);
+ 38e:	62 e7       	ldi	r22, 0x72	; 114
+ 390:	70 e0       	ldi	r23, 0x00	; 0
+ 392:	81 e0       	ldi	r24, 0x01	; 1
+ 394:	0e 94 78 00 	call	0xf0	; 0xf0 <ADC_readChannel>
+	T_L = g_ADC_value;
+ 398:	80 91 ac 00 	lds	r24, 0x00AC	; 0x8000ac <__data_end>
+ 39c:	90 91 ad 00 	lds	r25, 0x00AD	; 0x8000ad <__data_end+0x1>
+ 3a0:	90 93 be 00 	sts	0x00BE, r25	; 0x8000be <T_L+0x1>
+ 3a4:	80 93 bd 00 	sts	0x00BD, r24	; 0x8000bd <T_L>
+	ADC_readChannel(2,&ADC_Config);
+ 3a8:	62 e7       	ldi	r22, 0x72	; 114
+ 3aa:	70 e0       	ldi	r23, 0x00	; 0
+ 3ac:	82 e0       	ldi	r24, 0x02	; 2
+ 3ae:	0e 94 78 00 	call	0xf0	; 0xf0 <ADC_readChannel>
+	B_R = g_ADC_value;
+ 3b2:	80 91 ac 00 	lds	r24, 0x00AC	; 0x8000ac <__data_end>
+ 3b6:	90 91 ad 00 	lds	r25, 0x00AD	; 0x8000ad <__data_end+0x1>
+ 3ba:	90 93 b8 00 	sts	0x00B8, r25	; 0x8000b8 <B_R+0x1>
+ 3be:	80 93 b7 00 	sts	0x00B7, r24	; 0x8000b7 <B_R>
+	ADC_readChannel(3,&ADC_Config);
+ 3c2:	62 e7       	ldi	r22, 0x72	; 114
+ 3c4:	70 e0       	ldi	r23, 0x00	; 0
+ 3c6:	83 e0       	ldi	r24, 0x03	; 3
+ 3c8:	0e 94 78 00 	call	0xf0	; 0xf0 <ADC_readChannel>
+	B_L = g_ADC_value; 
+ 3cc:	80 91 ac 00 	lds	r24, 0x00AC	; 0x8000ac <__data_end>
+ 3d0:	90 91 ad 00 	lds	r25, 0x00AD	; 0x8000ad <__data_end+0x1>
+ 3d4:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <B_L+0x1>
+ 3d8:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <B_L>
+ 3dc:	08 95       	ret
+
+000003de <Get_Avgs>:
+}
+void Get_Avgs()
+{
+	Avgs.AvgTop = ((T_R + T_L) / 2);
+ 3de:	a0 91 b9 00 	lds	r26, 0x00B9	; 0x8000b9 <T_R>
+ 3e2:	b0 91 ba 00 	lds	r27, 0x00BA	; 0x8000ba <T_R+0x1>
+ 3e6:	60 91 bd 00 	lds	r22, 0x00BD	; 0x8000bd <T_L>
+ 3ea:	70 91 be 00 	lds	r23, 0x00BE	; 0x8000be <T_L+0x1>
+ 3ee:	ee ea       	ldi	r30, 0xAE	; 174
+ 3f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 3f2:	ad 01       	movw	r20, r26
+ 3f4:	46 0f       	add	r20, r22
+ 3f6:	57 1f       	adc	r21, r23
+ 3f8:	56 95       	lsr	r21
+ 3fa:	47 95       	ror	r20
+ 3fc:	51 83       	std	Z+1, r21	; 0x01
+ 3fe:	40 83       	st	Z, r20
+	Avgs.AvgBot = ((B_R + B_L) / 2);
+ 400:	20 91 b7 00 	lds	r18, 0x00B7	; 0x8000b7 <B_R>
+ 404:	30 91 b8 00 	lds	r19, 0x00B8	; 0x8000b8 <B_R+0x1>
+ 408:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <B_L>
+ 40c:	90 91 bc 00 	lds	r25, 0x00BC	; 0x8000bc <B_L+0x1>
+ 410:	a9 01       	movw	r20, r18
+ 412:	48 0f       	add	r20, r24
+ 414:	59 1f       	adc	r21, r25
+ 416:	56 95       	lsr	r21
+ 418:	47 95       	ror	r20
+ 41a:	53 83       	std	Z+3, r21	; 0x03
+ 41c:	42 83       	std	Z+2, r20	; 0x02
+	Avgs.AvgRight = ((T_R + B_R) / 2);
+ 41e:	2a 0f       	add	r18, r26
+ 420:	3b 1f       	adc	r19, r27
+ 422:	36 95       	lsr	r19
+ 424:	27 95       	ror	r18
+ 426:	35 83       	std	Z+5, r19	; 0x05
+ 428:	24 83       	std	Z+4, r18	; 0x04
+	Avgs.AvgLeft = ((T_L + B_L) / 2);
+ 42a:	86 0f       	add	r24, r22
+ 42c:	97 1f       	adc	r25, r23
+ 42e:	96 95       	lsr	r25
+ 430:	87 95       	ror	r24
+ 432:	97 83       	std	Z+7, r25	; 0x07
+ 434:	86 83       	std	Z+6, r24	; 0x06
+ 436:	08 95       	ret
+
+00000438 <SelectDir>:
+}
+void SelectDir()
+{
+	if (Avgs.AvgTop > Avgs.AvgBot)
+ 438:	ee ea       	ldi	r30, 0xAE	; 174
+ 43a:	f0 e0       	ldi	r31, 0x00	; 0
+ 43c:	20 81       	ld	r18, Z
+ 43e:	31 81       	ldd	r19, Z+1	; 0x01
+ 440:	82 81       	ldd	r24, Z+2	; 0x02
+ 442:	93 81       	ldd	r25, Z+3	; 0x03
+ 444:	82 17       	cp	r24, r18
+ 446:	93 07       	cpc	r25, r19
+ 448:	18 f4       	brcc	.+6      	; 0x450 <SelectDir+0x18>
+	{
+		TrackerDir = UpRotate;
+ 44a:	42 e0       	ldi	r20, 0x02	; 2
+ 44c:	40 93 b6 00 	sts	0x00B6, r20	; 0x8000b6 <TrackerDir>
+	}
+	if (Avgs.AvgTop < Avgs.AvgBot)
+ 450:	28 17       	cp	r18, r24
+ 452:	39 07       	cpc	r19, r25
+ 454:	18 f4       	brcc	.+6      	; 0x45c <SelectDir+0x24>
+	{
+		TrackerDir = DownRotate;
+ 456:	83 e0       	ldi	r24, 0x03	; 3
+ 458:	80 93 b6 00 	sts	0x00B6, r24	; 0x8000b6 <TrackerDir>
+	}
+	if (Avgs.AvgRight > Avgs.AvgLeft)
+ 45c:	ee ea       	ldi	r30, 0xAE	; 174
+ 45e:	f0 e0       	ldi	r31, 0x00	; 0
+ 460:	24 81       	ldd	r18, Z+4	; 0x04
+ 462:	35 81       	ldd	r19, Z+5	; 0x05
+ 464:	86 81       	ldd	r24, Z+6	; 0x06
+ 466:	97 81       	ldd	r25, Z+7	; 0x07
+ 468:	82 17       	cp	r24, r18
+ 46a:	93 07       	cpc	r25, r19
+ 46c:	18 f4       	brcc	.+6      	; 0x474 <SelectDir+0x3c>
+	{
+		TrackerDir = AntiClockWise; 
+ 46e:	41 e0       	ldi	r20, 0x01	; 1
+ 470:	40 93 b6 00 	sts	0x00B6, r20	; 0x8000b6 <TrackerDir>
+	}
+	if (Avgs.AvgRight < Avgs.AvgLeft)
+ 474:	28 17       	cp	r18, r24
+ 476:	39 07       	cpc	r19, r25
+ 478:	10 f4       	brcc	.+4      	; 0x47e <SelectDir+0x46>
+	{
+		TrackerDir = ClockWise;
+ 47a:	10 92 b6 00 	sts	0x00B6, r1	; 0x8000b6 <TrackerDir>
+ 47e:	08 95       	ret
+
+00000480 <UpDownMove>:
+	}
+
+}
+void UpDownMove(uint8 a, uint8 b)
+{
+ 480:	cf 93       	push	r28
+ 482:	c6 2f       	mov	r28, r22
+	WriteOnpin(B,4,a);
+ 484:	48 2f       	mov	r20, r24
+ 486:	64 e0       	ldi	r22, 0x04	; 4
+ 488:	86 e3       	ldi	r24, 0x36	; 54
+ 48a:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	WriteOnpin(B,5,b);
+ 48e:	4c 2f       	mov	r20, r28
+ 490:	65 e0       	ldi	r22, 0x05	; 5
+ 492:	86 e3       	ldi	r24, 0x36	; 54
+ 494:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	PWM_Duty(&UpDownMotor,255);
+ 498:	6f ef       	ldi	r22, 0xFF	; 255
+ 49a:	83 e6       	ldi	r24, 0x63	; 99
+ 49c:	90 e0       	ldi	r25, 0x00	; 0
+ 49e:	0e 94 16 03 	call	0x62c	; 0x62c <PWM_Duty>
+}
+ 4a2:	cf 91       	pop	r28
+ 4a4:	08 95       	ret
+
+000004a6 <RightLeftMove>:
+void RightLeftMove(uint8 a, uint8 b)
+{
+ 4a6:	cf 93       	push	r28
+ 4a8:	c6 2f       	mov	r28, r22
+	WriteOnpin(B,6,a);
+ 4aa:	48 2f       	mov	r20, r24
+ 4ac:	66 e0       	ldi	r22, 0x06	; 6
+ 4ae:	86 e3       	ldi	r24, 0x36	; 54
+ 4b0:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	WriteOnpin(B,7,b);
+ 4b4:	4c 2f       	mov	r20, r28
+ 4b6:	67 e0       	ldi	r22, 0x07	; 7
+ 4b8:	86 e3       	ldi	r24, 0x36	; 54
+ 4ba:	0e 94 af 00 	call	0x15e	; 0x15e <WriteOnpin>
+	PWM_Duty(&LeftRightMotor,255);
+ 4be:	6f ef       	ldi	r22, 0xFF	; 255
+ 4c0:	80 e6       	ldi	r24, 0x60	; 96
+ 4c2:	90 e0       	ldi	r25, 0x00	; 0
+ 4c4:	0e 94 16 03 	call	0x62c	; 0x62c <PWM_Duty>
+ 4c8:	cf 91       	pop	r28
+ 4ca:	08 95       	ret
+
+000004cc <main>:
+LCD_PinsCnfg_t mylcd = {C,{0,1,2,3,4,5,6,7},D,0,1};
+ configType UpDownMotor = {TIMER0,CLEAR_OC0,F_CPU8};
+ configType LeftRightMotor = {TIMER2,CLEAR_OC0,F_CPU8};
+int main(void)
+{
+	ADC_init(&ADC_Config);
+ 4cc:	82 e7       	ldi	r24, 0x72	; 114
+ 4ce:	90 e0       	ldi	r25, 0x00	; 0
+ 4d0:	0e 94 62 00 	call	0xc4	; 0xc4 <ADC_init>
+	PWM_init(&UpDownMotor);
+ 4d4:	83 e6       	ldi	r24, 0x63	; 99
+ 4d6:	90 e0       	ldi	r25, 0x00	; 0
+ 4d8:	0e 94 de 02 	call	0x5bc	; 0x5bc <PWM_init>
+	PWM_init(&LeftRightMotor);
+ 4dc:	80 e6       	ldi	r24, 0x60	; 96
+ 4de:	90 e0       	ldi	r25, 0x00	; 0
+ 4e0:	0e 94 de 02 	call	0x5bc	; 0x5bc <PWM_init>
+	lcd_init(&mylcd); 
+ 4e4:	86 e6       	ldi	r24, 0x66	; 102
+ 4e6:	90 e0       	ldi	r25, 0x00	; 0
+ 4e8:	0e 94 01 01 	call	0x202	; 0x202 <lcd_init>
+	SetPinDirection(B,4,OUTPUT);
+ 4ec:	41 e0       	ldi	r20, 0x01	; 1
+ 4ee:	64 e0       	ldi	r22, 0x04	; 4
+ 4f0:	86 e3       	ldi	r24, 0x36	; 54
+ 4f2:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+	SetPinDirection(B,5,OUTPUT);
+ 4f6:	41 e0       	ldi	r20, 0x01	; 1
+ 4f8:	65 e0       	ldi	r22, 0x05	; 5
+ 4fa:	86 e3       	ldi	r24, 0x36	; 54
+ 4fc:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+	SetPinDirection(B,6,OUTPUT);
+ 500:	41 e0       	ldi	r20, 0x01	; 1
+ 502:	66 e0       	ldi	r22, 0x06	; 6
+ 504:	86 e3       	ldi	r24, 0x36	; 54
+ 506:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+	SetPinDirection(B,7,OUTPUT);
+ 50a:	41 e0       	ldi	r20, 0x01	; 1
+ 50c:	67 e0       	ldi	r22, 0x07	; 7
+ 50e:	86 e3       	ldi	r24, 0x36	; 54
+ 510:	0e 94 8c 00 	call	0x118	; 0x118 <SetPinDirection>
+	GotoXY(&mylcd,0,0); 
+ 514:	40 e0       	ldi	r20, 0x00	; 0
+ 516:	60 e0       	ldi	r22, 0x00	; 0
+ 518:	86 e6       	ldi	r24, 0x66	; 102
+ 51a:	90 e0       	ldi	r25, 0x00	; 0
+ 51c:	0e 94 9e 01 	call	0x33c	; 0x33c <GotoXY>
+	WriteString(&mylcd,"Tracker System  ");
+ 520:	65 e7       	ldi	r22, 0x75	; 117
+ 522:	70 e0       	ldi	r23, 0x00	; 0
+ 524:	86 e6       	ldi	r24, 0x66	; 102
+ 526:	90 e0       	ldi	r25, 0x00	; 0
+ 528:	0e 94 82 01 	call	0x304	; 0x304 <WriteString>
+	GotoXY(&mylcd,1,0);
+ 52c:	40 e0       	ldi	r20, 0x00	; 0
+ 52e:	61 e0       	ldi	r22, 0x01	; 1
+ 530:	86 e6       	ldi	r24, 0x66	; 102
+ 532:	90 e0       	ldi	r25, 0x00	; 0
+ 534:	0e 94 9e 01 	call	0x33c	; 0x33c <GotoXY>
+	WriteString(&mylcd,"Here We display :");
+ 538:	66 e8       	ldi	r22, 0x86	; 134
+ 53a:	70 e0       	ldi	r23, 0x00	; 0
+ 53c:	86 e6       	ldi	r24, 0x66	; 102
+ 53e:	90 e0       	ldi	r25, 0x00	; 0
+ 540:	0e 94 82 01 	call	0x304	; 0x304 <WriteString>
+	GotoXY(&mylcd,2,0);
+ 544:	40 e0       	ldi	r20, 0x00	; 0
+ 546:	62 e0       	ldi	r22, 0x02	; 2
+ 548:	86 e6       	ldi	r24, 0x66	; 102
+ 54a:	90 e0       	ldi	r25, 0x00	; 0
+ 54c:	0e 94 9e 01 	call	0x33c	; 0x33c <GotoXY>
+	WriteString(&mylcd,"LDR values");
+ 550:	68 e9       	ldi	r22, 0x98	; 152
+ 552:	70 e0       	ldi	r23, 0x00	; 0
+ 554:	86 e6       	ldi	r24, 0x66	; 102
+ 556:	90 e0       	ldi	r25, 0x00	; 0
+ 558:	0e 94 82 01 	call	0x304	; 0x304 <WriteString>
+	GotoXY(&mylcd,3,0);
+ 55c:	40 e0       	ldi	r20, 0x00	; 0
+ 55e:	63 e0       	ldi	r22, 0x03	; 3
+ 560:	86 e6       	ldi	r24, 0x66	; 102
+ 562:	90 e0       	ldi	r25, 0x00	; 0
+ 564:	0e 94 9e 01 	call	0x33c	; 0x33c <GotoXY>
+	WriteString(&mylcd,"Position"); 
+ 568:	63 ea       	ldi	r22, 0xA3	; 163
+ 56a:	70 e0       	ldi	r23, 0x00	; 0
+ 56c:	86 e6       	ldi	r24, 0x66	; 102
+ 56e:	90 e0       	ldi	r25, 0x00	; 0
+ 570:	0e 94 82 01 	call	0x304	; 0x304 <WriteString>
+	while (1)
+	{
+
+		Get_data();
+ 574:	0e 94 ba 01 	call	0x374	; 0x374 <Get_data>
+		Get_Avgs();
+ 578:	0e 94 ef 01 	call	0x3de	; 0x3de <Get_Avgs>
+		SelectDir();
+ 57c:	0e 94 1c 02 	call	0x438	; 0x438 <SelectDir>
+
+		switch (TrackerDir)
+ 580:	80 91 b6 00 	lds	r24, 0x00B6	; 0x8000b6 <TrackerDir>
+ 584:	81 30       	cpi	r24, 0x01	; 1
+ 586:	a9 f0       	breq	.+42     	; 0x5b2 <main+0xe6>
+ 588:	78 f0       	brcs	.+30     	; 0x5a8 <main+0xdc>
+ 58a:	82 30       	cpi	r24, 0x02	; 2
+ 58c:	19 f0       	breq	.+6      	; 0x594 <main+0xc8>
+ 58e:	83 30       	cpi	r24, 0x03	; 3
+ 590:	31 f0       	breq	.+12     	; 0x59e <main+0xd2>
+ 592:	f0 cf       	rjmp	.-32     	; 0x574 <main+0xa8>
+		{
+			case UpRotate: 
+			{
+				UpDownMove(1,0);	
+ 594:	60 e0       	ldi	r22, 0x00	; 0
+ 596:	81 e0       	ldi	r24, 0x01	; 1
+ 598:	0e 94 40 02 	call	0x480	; 0x480 <UpDownMove>
+				break;
+ 59c:	eb cf       	rjmp	.-42     	; 0x574 <main+0xa8>
+			}
+			case DownRotate:
+			{
+				UpDownMove(0,1);
+ 59e:	61 e0       	ldi	r22, 0x01	; 1
+ 5a0:	80 e0       	ldi	r24, 0x00	; 0
+ 5a2:	0e 94 40 02 	call	0x480	; 0x480 <UpDownMove>
+				break;
+ 5a6:	e6 cf       	rjmp	.-52     	; 0x574 <main+0xa8>
+			}
+			case ClockWise:
+			{
+				RightLeftMove(1,0);
+ 5a8:	60 e0       	ldi	r22, 0x00	; 0
+ 5aa:	81 e0       	ldi	r24, 0x01	; 1
+ 5ac:	0e 94 53 02 	call	0x4a6	; 0x4a6 <RightLeftMove>
+				break;
+ 5b0:	e1 cf       	rjmp	.-62     	; 0x574 <main+0xa8>
+			}
+			case AntiClockWise:
+			{
+				RightLeftMove(0,1);
+ 5b2:	61 e0       	ldi	r22, 0x01	; 1
+ 5b4:	80 e0       	ldi	r24, 0x00	; 0
+ 5b6:	0e 94 53 02 	call	0x4a6	; 0x4a6 <RightLeftMove>
+				break;
+ 5ba:	dc cf       	rjmp	.-72     	; 0x574 <main+0xa8>
+
+000005bc <PWM_init>:
+
+
+
+
+void PWM_init(const configType * config_Ptr)
+{
+ 5bc:	fc 01       	movw	r30, r24
+	if((config_Ptr->Timer) == TIMER0)
+ 5be:	80 81       	ld	r24, Z
+ 5c0:	81 11       	cpse	r24, r1
+ 5c2:	19 c0       	rjmp	.+50     	; 0x5f6 <PWM_init+0x3a>
+	{
+		SetBit(DDRB,PB3);
+ 5c4:	bb 9a       	sbi	0x17, 3	; 23
+		TCNT0 = 0;
+ 5c6:	12 be       	out	0x32, r1	; 50
+		OCR0  = 0;
+ 5c8:	1c be       	out	0x3c, r1	; 60
+		SetBit(TCCR0,WGM01);
+ 5ca:	83 b7       	in	r24, 0x33	; 51
+ 5cc:	88 60       	ori	r24, 0x08	; 8
+ 5ce:	83 bf       	out	0x33, r24	; 51
+		SetBit(TCCR0,WGM00);
+ 5d0:	83 b7       	in	r24, 0x33	; 51
+ 5d2:	80 64       	ori	r24, 0x40	; 64
+ 5d4:	83 bf       	out	0x33, r24	; 51
+		TCCR0 = (TCCR0 & 0xCF) | ((config_Ptr->mode)<<4);
+ 5d6:	23 b7       	in	r18, 0x33	; 51
+ 5d8:	91 81       	ldd	r25, Z+1	; 0x01
+ 5da:	30 e1       	ldi	r19, 0x10	; 16
+ 5dc:	93 9f       	mul	r25, r19
+ 5de:	c0 01       	movw	r24, r0
+ 5e0:	11 24       	eor	r1, r1
+ 5e2:	92 2f       	mov	r25, r18
+ 5e4:	9f 7c       	andi	r25, 0xCF	; 207
+ 5e6:	89 2b       	or	r24, r25
+ 5e8:	83 bf       	out	0x33, r24	; 51
+		TCCR0 = (TCCR0 & 0xF8) | (config_Ptr->clock);
+ 5ea:	83 b7       	in	r24, 0x33	; 51
+ 5ec:	88 7f       	andi	r24, 0xF8	; 248
+ 5ee:	92 81       	ldd	r25, Z+2	; 0x02
+ 5f0:	89 2b       	or	r24, r25
+ 5f2:	83 bf       	out	0x33, r24	; 51
+ 5f4:	08 95       	ret
+	}		
+	else if((config_Ptr->Timer) == TIMER2)
+ 5f6:	81 30       	cpi	r24, 0x01	; 1
+ 5f8:	c1 f4       	brne	.+48     	; 0x62a <PWM_init+0x6e>
+	{
+		SetBit(DDRD,PD7);
+ 5fa:	8f 9a       	sbi	0x11, 7	; 17
+		TCNT2 = 0;
+ 5fc:	14 bc       	out	0x24, r1	; 36
+		OCR2  = 0;
+ 5fe:	13 bc       	out	0x23, r1	; 35
+		SetBit(TCCR2,WGM21);
+ 600:	85 b5       	in	r24, 0x25	; 37
+ 602:	88 60       	ori	r24, 0x08	; 8
+ 604:	85 bd       	out	0x25, r24	; 37
+		SetBit(TCCR2,WGM20);
+ 606:	85 b5       	in	r24, 0x25	; 37
+ 608:	80 64       	ori	r24, 0x40	; 64
+ 60a:	85 bd       	out	0x25, r24	; 37
+		TCCR2 = (TCCR2 & 0xCF) | ((config_Ptr->mode)<<4);
+ 60c:	25 b5       	in	r18, 0x25	; 37
+ 60e:	91 81       	ldd	r25, Z+1	; 0x01
+ 610:	30 e1       	ldi	r19, 0x10	; 16
+ 612:	93 9f       	mul	r25, r19
+ 614:	c0 01       	movw	r24, r0
+ 616:	11 24       	eor	r1, r1
+ 618:	92 2f       	mov	r25, r18
+ 61a:	9f 7c       	andi	r25, 0xCF	; 207
+ 61c:	89 2b       	or	r24, r25
+ 61e:	85 bd       	out	0x25, r24	; 37
+		TCCR2 = (TCCR2 & 0xF8) | (config_Ptr->clock);
+ 620:	85 b5       	in	r24, 0x25	; 37
+ 622:	88 7f       	andi	r24, 0xF8	; 248
+ 624:	92 81       	ldd	r25, Z+2	; 0x02
+ 626:	89 2b       	or	r24, r25
+ 628:	85 bd       	out	0x25, r24	; 37
+ 62a:	08 95       	ret
+
+0000062c <PWM_Duty>:
+	}
+}
+void PWM_Duty(const configType * config_Ptr,uint8 duty)
+{
+	if((config_Ptr->Timer) ==TIMER0)
+ 62c:	fc 01       	movw	r30, r24
+ 62e:	80 81       	ld	r24, Z
+ 630:	81 11       	cpse	r24, r1
+ 632:	02 c0       	rjmp	.+4      	; 0x638 <PWM_Duty+0xc>
+	{
+		OCR0 = duty;
+ 634:	6c bf       	out	0x3c, r22	; 60
+ 636:	08 95       	ret
+	}
+	else if((config_Ptr->Timer) ==TIMER2)
+ 638:	81 30       	cpi	r24, 0x01	; 1
+ 63a:	09 f4       	brne	.+2      	; 0x63e <PWM_Duty+0x12>
+	{
+		OCR2 = duty;
+ 63c:	63 bd       	out	0x23, r22	; 35
+ 63e:	08 95       	ret
+
+00000640 <_exit>:
+ 640:	f8 94       	cli
+
+00000642 <__stop_program>:
+ 642:	ff cf       	rjmp	.-2      	; 0x642 <__stop_program>
